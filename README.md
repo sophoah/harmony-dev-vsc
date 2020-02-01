@@ -10,7 +10,6 @@ This is a project to help setup the development environment for developping on H
   - Remote development
 - Docker
 
-
 # How to use
 - git clone https://github.com/sophoah/harmony-dev-vsc.git
 - edit the file .devcontainer/devcontainer.json to replace your host local path in 
@@ -19,7 +18,7 @@ This is a project to help setup the development environment for developping on H
 		"source=YOURDRIVE:/YOUR_LOCAL_PATH,target=/data,type=bind,consistency=cached"
 	],
 ```
-this it to have a shared folder between your host and the container. I am putting here all the codes i am developping
+this it to have a shared folder between your host and the container. I am putting here all the codes I am developping. The other reason is that the git push will be done from the host machine which has access to my SSH private keys.
 - Open VSC and click on the green button in the bottom left
 - Click on "Open folder in container" and chosse the directory we just clone and modified
 - the container should now be in process to be built
