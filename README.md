@@ -10,7 +10,7 @@ This is a project to help setup the development environment for developping on H
   - Remote development
 - Docker
 
-# How to use
+## How to use
 - git clone https://github.com/sophoah/harmony-dev-vsc.git
 - edit the file .devcontainer/devcontainer.json to replace your host local path in 
 ```
