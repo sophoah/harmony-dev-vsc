@@ -6,16 +6,20 @@ This is a project to help setup the development environment for GO development o
 
 ## Pre requesites
 
-- Visual studio code installed on your system : <https://code.visualstudio.com/> with the following extension to be installed :
+All the below needs to be installed on your host system:
+
+- Visual studio code  : <https://code.visualstudio.com/> with the following extension to be installed:
   - go
   - Remote - Containers
   - Remote development
 - Docker
+- git for windows
 
 Go binaries doesn't need to be installed on your host machine.
 
 ## How to use
 
+From your host machine:
 - git clone <https://github.com/sophoah/harmony-dev-vsc.git>
 - edit the file .devcontainer/devcontainer.json to replace your host local path in
 
