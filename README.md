@@ -9,6 +9,7 @@ This is a project to help setup the development environment for developping on H
   - Remote - Containers
   - Remote development
 - Docker
+Go binaries doesn't need to be installed on your host machine.
 
 ## How to use
 - git clone https://github.com/sophoah/harmony-dev-vsc.git
