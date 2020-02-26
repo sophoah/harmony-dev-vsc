@@ -26,9 +26,11 @@ ENV DEBIAN_FRONTEND=noninteractive
 RUN apt-get update && apt-get -y install --no-install-recommends apt-utils dialog 2>&1 \
     #
     # Verify git, process tools, lsb-release (common in install instructions for CLIs) installed
-    && apt-get -y install git iproute2 procps lsb-release \
+    && apt-get -y install git iproute2 procps lsb-release rsync bc jq \
     #
-    # Install Go tools w/module support
+    # Additional tools for harmony dev environment
+    && apt-get -y install rsync bc jq \
+# Install Go tools w/module support
     && mkdir -p /tmp/gotools \
     && cd /tmp/gotools \
     && GO111MODULE=on go get -v golang.org/x/tools/gopls@latest 2>&1 \
@@ -44,7 +46,6 @@ RUN apt-get update && apt-get -y install --no-install-recommends apt-utils dialo
         github.com/sqs/goreturns@latest \
         github.com/josharian/impl@latest \
         github.com/davidrjenni/reftools/cmd/fillstruct@latest \
-        github.com/uudashr/gopkgs/cmd/gopkgs@latest  \
         github.com/ramya-rao-a/go-outline@latest  \
         github.com/acroca/go-symbols@latest  \
         github.com/godoctor/godoctor@latest  \
@@ -54,9 +55,9 @@ RUN apt-get update && apt-get -y install --no-install-recommends apt-utils dialo
         github.com/mgechev/revive@latest  \
         github.com/go-delve/delve/cmd/dlv@latest 2>&1 \
     #
-    # Install Go tools w/o module support
-	# DEPRACTED in recent go version
-    ## && go get -v github.com/alecthomas/gometalinter 2>&1 \
+    # Install Go tools w/o module support the below is failing the docker image built (tested on 26th Feb 2020)
+    #&& go get -v github.com/alecthomas/gometalinter \
+    #    github.com/uudashr/gopkgs/cmd/gopkgs 2>&1 \
     #
     # Install gocode-gomod
     && go get -x -d github.com/stamblerre/gocode 2>&1 \
@@ -65,6 +66,7 @@ RUN apt-get update && apt-get -y install --no-install-recommends apt-utils dialo
     #
     # Install golangci-lint
     && curl -sSfL https://raw.githubusercontent.com/golangci/golangci-lint/master/install.sh | sh -s -- -b $(go env GOPATH)/bin 2>&1 \
+    #
     #
 	# Container runs with root user so the below are not required
     # Create a non-root user to use if preferred - see https://aka.ms/vscode-remote/containers/non-root-user.
